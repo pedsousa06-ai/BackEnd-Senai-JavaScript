@@ -117,7 +117,17 @@ const manipularDados = function(){
     listaDeFornecedores.push("Luizinho da Silva", "André da silva", "Carlos Da Silva")
 
     console.table(listaDeFornecedores)
-    
+    //permite remover elementos baseados em 
+                            // splice(indice,quant elementos)
+
+    //Splice() -> Permite adicionar um novo elemento em um determinado lugar do array (indice)
+                            //indice 0-> Sifnifica que não será removido ninguém, novo conteudo
+    listaDeFornecedores.splice(2,0,'Carlos da Silva')
+    console.table(listaDeFornecedores)
+
+
+    listaDeFornecedores[1] = 'Novo conteudo'
+    console.table(listaDeFornecedores)
 }
 
 const removerItem = function(nome){
@@ -135,14 +145,8 @@ const removerItem = function(nome){
     }
 
 
-    //for(indice in listaDeNomes ){
-    //    if(listaDeNomes[indice] == nome){
-    //       listaDeNomes.splice(indice,3)
-    //    }
-    //}
 
 }
-
 const verificarItem = function(nome){
 
     //Verifica a existência de um conteúdo dentro de uma lista(true/false)
@@ -160,22 +164,136 @@ const quantidadeDeItens = function(nome){
     return cont
 }
 
+const criandodadosJSON = function(){
+    let aluno = {   "nome": "José", 
+                    "ra": 123456, 
+                    "telefone": "11975757545", 
+                    "emails": "jose@gmail.com"}
 
+    //Exibindo o objeto JSON completo
+    console.log(aluno)
+    //console.table(aluno)
+
+    //Exibindo apenas um atributo JSON
+    console.log(aluno.nome)
+    console.log(aluno.gmail)
+
+    //Adiciona um novo atributo no JSON
+    aluno.sexo = 'Masculino'
+    console.log(aluno)
+
+
+    //Remove um atributo do JSON
+    delete aluno.telefone
+    console.log(aluno)
+}
+
+
+const cadastroDeProdutos = function(){
+
+    // Array de objetos representando as cores disponíveis para os produtos
+    // Cada objeto possui um id único e o nome da cor
+    let cor = [
+        {"id": 1, "nomecor": "Branco"}, //Indice 0
+        {"id": 2, "nomecor": "Preto"},  //Indice 1   
+        {"id": 3 ,"nomecor":"Azul"},    //Indice 2
+        {"id": 4, "nomecor": "Rosa"},   //Indice 3
+        {"id": 5, "nomecor": "Cinza"}   //Indice 4    
+    ]
+
+    // Array de objetos representando as marcas cadastradas
+    // Cada marca possui id, nome, telefone e e-mail para contato
+    let marcas = [
+        {"id": 1, "marca": "Lg",            "telefone": "1234567899", "email": "lg@gmail.com.br"},
+        {"id": 2, "marca": "Dell",          "telefone": "5896983689", "email": "dell@gmail.com.br"},
+        {"id": 3, "marca": "Lenovo",        "telefone": "5857582689", "email": "lenovo@gmail.com.br"},
+        {"id": 4, "marca": "Apple",         "telefone": "4785968328", "email": "apple@gmail.com.br"},
+        {"id": 5, "marca": "Rayzer",        "telefone": "5478598392", "email": "rayzer@gmail.com.br"},
+        {"id": 6, "marca": "Logitech",      "telefone": "4578236589", "email": "log@gmail.com.br"},
+        {"id": 7, "marca": "Multilaser",    "telefone": "5478935828", "email": "multilaser@gmail.com.br"}
+    ]
+
+    // Array de objetos representando os produtos cadastrados
+    // Cada produto referencia diretamente objetos dos arrays 'cor' e 'marcas'
+    let produtos = [
+        {
+            "id": 1, 
+            "nome": "Monitor", 
+            "descricao": "27 Polegadas",
+            "marca": [
+                marcas[1].marca
+                ],   
+            "qtde": 20,                
+            "cor": [
+                cor[4],                 
+                cor[1]                 
+            ],
+            "valor": 800.50                                       
+        },
+
+        {
+            "id": 2,
+            "nome": "Teclado", 
+            "descricao": "Teclado mecanico rgb",
+            "marca": [
+                marcas[5].marca
+            ],   
+            "qtde": 200,               
+            "cor": cor,
+            "valor": 150.00 
+        },
+
+        {
+            "id": 3,
+            "nome": "Mouse", 
+            "descricao": "Mouse sem fio",
+            "marca": [
+                        marcas[0].marca,
+                        marcas[1].marca,
+                        marcas[5].marca
+            ]
+            , 
+            "qtde": 500,            
+            "cor": [
+                    cor[0],
+                    cor[1],
+                    cor[4]
+            ],
+            "valor": 80.00 
+        }
+
+
+    ] 
+
+    
+    // Exibe o array de produtos formatado como tabela no console
+    // Facilita a visualização de todos os campos e valores
+    //console.table(produtos)
+
+    // Percorre o array de cores do primeiro produto (índice 0)
+    // Para cada cor, exibe uma mensagem com o nome da cor no console
+
+    produtos.forEach(function(produto){
+        console.log(`Produto: ${produto.nome}`)
+    })
+
+    produtos.forEach(function(produto))
+
+
+cadastroDeProdutos()
+
+//criandodadosJSON()
 
 // exibirDados()
 // manipularDados()
 // let resposta = removerItem('Jheniffer')
 // if(resposta){
 //     console.log('Item removido com sucesso.')
-
 // }else {
 //     console.log('Não foram encontrados itens para ser removido.')
 // }
 // console.table(listaDeNomes)
-
 //console.log(verificarItem('Jheniffer'))
-
-console.log(quantidadeDeItens('josé'))
-
+//console.log(quantidadeDeItens('josé'))
 //manipularDados()
 //exibirDados()
