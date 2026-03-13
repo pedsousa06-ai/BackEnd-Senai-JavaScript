@@ -273,11 +273,11 @@ const cadastroDeProdutos = function(){
     // Percorre o array de cores do primeiro produto (índice 0)
     // Para cada cor, exibe uma mensagem com o nome da cor no console
 
+    //repetição dentra da outra
     produtos.forEach(function(produto){
         console.log(`Produto: ${produto.nome}`)
     })
-
-    produtos.forEach(function(produto))
+        produtos.forEach(function(produto))
 
 
 cadastroDeProdutos()
