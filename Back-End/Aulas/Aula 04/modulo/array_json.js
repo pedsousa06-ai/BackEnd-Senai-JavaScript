@@ -275,11 +275,19 @@ const cadastroDeProdutos = function(){
 
     //repetição dentra da outra
     produtos.forEach(function(produto){
-        console.log(`Produto: ${produto.nome}`)
+    console.log(`Produto: ${produto.nome}`)
+    console.log(`Quantidade: ${produto.qtde}`)
+    console.log(`Valor: ${produto.valor}`)
+
+    produto.marca.forEach(function(marca){
+        console.log(`Marca: ${marca}`)
     })
-        produtos.forEach(function(produto))
 
-
+    produto.cor.forEach(function(cor){
+        console.log(`Cor: ${cor.nomecor}`)
+    })
+})
+}
 cadastroDeProdutos()
 
 //criandodadosJSON()
