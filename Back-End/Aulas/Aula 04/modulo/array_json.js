@@ -273,20 +273,25 @@ const cadastroDeProdutos = function(){
     // Percorre o array de cores do primeiro produto (índice 0)
     // Para cada cor, exibe uma mensagem com o nome da cor no console
 
-    //repetição dentra da outra
-    produtos.forEach(function(produto){
-    console.log(`Produto: ${produto.nome}`)
-    console.log(`Quantidade: ${produto.qtde}`)
-    console.log(`Valor: ${produto.valor}`)
+    //repetição dentro da outra
 
-    produto.marca.forEach(function(marca){
-        console.log(`Marca: ${marca}`)
-    })
+    //Percorre o objeto de produto, qtde e valor para trazer dados de cada array
+    produtos.forEach(function(itemProduto){
+    console.log(`Produto: ${itemProduto.nome}`)
+    console.log(`   Quantidade: ${itemProduto.qtde}`)
+    console.log(`       Valor: ${itemProduto.valor}`)
 
-    produto.cor.forEach(function(cor){
-        console.log(`Cor: ${cor.nomecor}`)
+        //Percorre o objeto de marca dentro de cada produto para trazer as marcas
+        itemProduto.marca.forEach(function(marca){
+        console.log(`           Marca: ${marca}`)
+        })
+
+        //Percorre o objeto de cor dentro de cada produto, para trazer as cores
+        itemProduto.cor.forEach(function(cor){
+        console.log(`                   Cor: ${cor.nomecor}`)
+        
+        })
     })
-})
 }
 cadastroDeProdutos()
 
