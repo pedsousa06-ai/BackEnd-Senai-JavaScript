@@ -276,7 +276,7 @@ const cadastroDeProdutos = function(){
     //repetição dentro da outra
 
     //Percorre o objeto de produto, qtde e valor para trazer dados de cada array
-    produtos.forEach(function(itemProduto){
+    /*produtos.forEach(function(itemProduto){
     console.log(`Produto: ${itemProduto.nome}`)
     console.log(`   Quantidade: ${itemProduto.qtde}`)
     console.log(`       Valor: ${itemProduto.valor}`)
@@ -289,9 +289,38 @@ const cadastroDeProdutos = function(){
         //Percorre o objeto de cor dentro de cada produto, para trazer as cores
         itemProduto.cor.forEach(function(cor){
         console.log(`                   Cor: ${cor.nomecor}`)
-        
+
+        })
+    })*/
+
+
+    //Pesquisando um produto pelo NOME
+    /*console.log("Pesuisando produtos pelo Nome.....")
+    let nome = "mouse"
+
+    produtos.forEach(function(itemProduto){
+    if(String(itemProduto.nome).toUpperCase() == String(nome).toUpperCase())
+        console.log(itemProduto)
+    })*/
+
+    //Pesquisanod plea cor
+    console.log("Pesquisando produto pela cor.......")
+
+    let corBusca = "Branco"
+    let status = false
+
+    produtos.forEach(function(itemProduto){
+    itemProduto.cor.forEach(function(itemCor){
+        if (itemCor.nomecor.toUpperCase() === corBusca.toUpperCase()) {
+            console.log(itemProduto)
+            status = true
+        }
         })
     })
+
+    if(!status)
+        console.log('Item pesquisado não foi encontrado.......')
+
 }
 cadastroDeProdutos()
 
