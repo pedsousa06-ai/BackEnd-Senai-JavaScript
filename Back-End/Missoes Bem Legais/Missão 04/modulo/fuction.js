@@ -208,11 +208,8 @@ function getCidades(uf) {
         descricao: estado.nome,
         quantidade_cidades: estado.cidades.length,
         cidades: estado.cidades.map(function(cidade){
-            // para cada cidade, retorna o nome e o id
-            return {
-                nome: cidade.nome,
-                id: cidade.id
-            }
+            // para cada cidade, retorna apenas o nome
+            return cidade.nome
         })
     }
 }
