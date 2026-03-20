@@ -31,7 +31,7 @@ function getListaDeEstados() {
     }
 }
 
-//console.log(getListaDeEstados())
+console.log(getListaDeEstados())
 
 
 
@@ -58,7 +58,7 @@ function getDadosEstados(uf) {
     }
 }
 
-//console.log(getDadosEstados('PI'))
+console.log(getDadosEstados('PI'))
 
 
 
@@ -84,7 +84,7 @@ function getCapitalestado(uf) {
     }
 }
 
-//console.log(getCapitalestado('AC'))
+console.log(getCapitalestado('AC'))
 
 
 
@@ -114,7 +114,7 @@ function getEstadosRegiao(regiao){
     }
 }
 
-//console.log(getEstadosRegiao("Sul"))
+console.log(getEstadosRegiao("Sul"))
 
 
 
@@ -157,6 +157,7 @@ var listaDeCapitais = criaListaDeCapitais()
 
 
 // retorna todos os dados das capitais do Brasil
+// retorna todos os dados das capitais do Brasil
 function getCapitalPais() {
 
     // verifica se o array de capitais está vazio
@@ -165,21 +166,25 @@ function getCapitalPais() {
         return false
     }
 
-    // percorre cada capital e retorna os dados no formato desejado
-    return listaDeCapitais.capitais.map(function(capital) {
-        return {
-            capital_atual: capital.capital_atual,
-            uf: capital.uf,
-            descricao: capital.descricao,
-            capital: capital.capital,
-            regiao: capital.regiao,
-            capital_pais_ano_inicio: capital.capital_pais_ano_inicio,
-            capital_pais_ano_termino: capital.capital_pais_ano_termino
-        }
-    })
+    // retorna um objeto com o titulo capitais e a lista de capitais
+    return {
+        capitais: listaDeCapitais.capitais.map(function(capital) {
+            return {
+                capital_atual: capital.capital_atual,
+                uf: capital.uf,
+                descricao: capital.descricao,
+                capital: capital.capital,
+                regiao: capital.regiao,
+                capital_pais_ano_inicio: capital.capital_pais_ano_inicio,
+                capital_pais_ano_termino: capital.capital_pais_ano_termino
+            }
+        })
+    }
 }
 
-//console.log(getCapitalPais())
+console.log(getCapitalPais())
+
+
 
 
 
