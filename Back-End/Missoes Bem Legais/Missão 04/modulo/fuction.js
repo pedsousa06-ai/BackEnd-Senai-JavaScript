@@ -63,7 +63,7 @@ console.log(getDadosEstados('PI'))
 
 
 // recebe uma sigla e retorna a capital do estado correspondente
-function getCapitalestado(uf) {
+function getCapitalEstado(uf) {
 
     // procura o estado que tem a sigla igual ao parametro recebido
     // o find retorna o primeiro elemento que satisfaz a condição
@@ -84,7 +84,7 @@ function getCapitalestado(uf) {
     }
 }
 
-console.log(getCapitalestado('AC'))
+console.log(getCapitalEstado('AC'))
 
 
 
@@ -215,3 +215,11 @@ function getCidades(uf) {
 }
 
 console.log(getCidades("AC"))
+
+module.exports = 
+     getListaDeEstados,
+    getDadosEstados,
+    getCapitalEstado,
+    getEstadosRegiao,
+    getCapitalPais,
+    getCidades
