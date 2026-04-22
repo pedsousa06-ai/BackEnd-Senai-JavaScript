@@ -1,5 +1,3 @@
-
-
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -16,7 +14,7 @@ const bodyParserJSON = bodyParser.json()
 
 //Conjunto de permissões a serem aplicadas no CORS da API
 const corsOptions = {
-    origin: ['*'], //Origem da requisição, podendo ser um IP ou um * (Todos)
+    origin: '*', //Origem da requisição, podendo ser um IP ou um * (Todos)
     methods: 'GET , POST, PUT, DELETE , OPTIONS', //S´~ao os verbos que serão liberados na API ( GET, POST, PUT e DELETE)
     allowedHeaders: ['Content-type', 'Autorization'] //São permissões de cabeçalhos do CORS
 }
@@ -28,17 +26,14 @@ app.use(cors(corsOptions))
 app.post("/v1/senai/locadora/filme", bodyParserJSON ,async function(request, response){
     //Recebe o conteudo dentro do body da requisição
     let dados = request.body
-    let result = await controllerFilme.inserirNovoFilme(dados)
+
+    //Recebe o content type da reuisição, para validar se é um JSON
+    let contentType = request.headers['content-type']
+
+    let result = await controllerFilme.inserirNovoFilme(dados, contentType)
     response.status(result.status_code)
     response.json(result)
 })
-
-
-
-
-
-
-
 
 app.listen(8080, function(){
     console.log("API funcionando e aguardando novas requisições")
