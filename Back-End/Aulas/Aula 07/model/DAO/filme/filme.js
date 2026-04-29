@@ -70,20 +70,76 @@ const insertFilme = async function(filme){
     }
 }
 
-
 //Função para atualizar um filme existente na tabela
-const updateFilme = async function(filme){
+// Função para atualizar um filme existente na tabela
+const updateFilme = async function(filme) {
 
+    try{
+
+    let sql = `UPDATE tbl_filme SET
+        nome =                      '${filme.nome}',
+        data_lancamento =           '${filme.data_lancamento}',
+        duracao =                   '${filme.duracao}',
+        sinopse =                   '${filme.sinopse}',
+        avaliacao =                 if('${filme.avaliacao}' = '', null, '${filme.avaliacao}'),
+        valor =                     '${filme.valor}',
+        capa =                      '${filme.capa}'
+    WHERE id =${filme.id}`
+
+
+    //Executa o script SQL no BD
+    let result = await knexConex.raw(sql)
+
+    if(result)
+        return true
+    else
+        return false
+
+    }catch(error){
+        return false
+    }
 }
 
 //Função para retornar todos os dados da tabela de filme
 const selectAllFilme = async function(){
 
+    try {
+        let sql = `select * from tbl_filme order by id desc`
+
+        //Executar o ScriptSql no banco de dados, para retornar os filmes
+        let result = await knexConex.raw(sql)
+
+        // Validação para verificar se o retorno no BD é uma array (Array.isArray)
+        //Se o ScriptSQL 
+        if(Array.isArray(result)){
+            return result[0]
+        }else{
+            return false
+        }
+
+    } catch (error) {
+        return false
+    }
 }
 
 //Função para retornar os dados do filme filrando pelo id
 const selectByIdFilme = async function(id){
 
+    try {
+        let sql = `select * from tbl_filme where id=${id}`
+
+        let result = await knexConex.raw(sql)
+
+        // knex.raw retorna [rows, fields], os dados estão em result[0]
+        if(result[0] && result[0].length > 0){
+            return result[0]  // ✅ retorna as linhas encontradas
+        } else {
+            return false
+        }
+
+    } catch (error) {
+        return false
+    }
 }
 
 

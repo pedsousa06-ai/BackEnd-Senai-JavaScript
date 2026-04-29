@@ -12,7 +12,7 @@ const { development } = require("../../model/database_config_knex/knexFile");
 // Mensagens padrão para devolutiva de toda API
 const DEFAULT_MESSAGE = {
     api_description: 'API para gerenciar o controle de Filmes ',
-    development: 'Brayan Alves',
+    development: 'Pedro Sousa',
     version: '1.0.4.26',
     status: Boolean,
     status_code: Number,
@@ -21,18 +21,20 @@ const DEFAULT_MESSAGE = {
 
 
 //Mensagens de erro da API
-const ERROR_BAD_REQUEST                  = {status : false, status_code: 400, message: 'Os dados enviados na requisição não estão corretos'}
-
-const ERROR_INTERNAL_SERVER_MODEL        = {status : false, status_code: 500, message: 'Não foi possível procesar a requisição por conta de erro na API [ERRO NA MODELAGEM DE DADOS]'}
-
-const ERROR_INTERNAL_SERVER_CONTROLLER   = {status : false, status_code: 500, message: 'Não foi possível procesar a requisição por conta de erro na API [ERRO NA CONTROLLER'}
-
-const ERROR_CONTENT_TYPE                 = {status : false, status_code: 415, message: 'Não foi possível processar a requisição pois o formato de dados aceitp pela APLI é somente JSON'}
-
-
+const ERROR_BAD_REQUEST                  = {status : false, status_code: 400, message: 'Os dados enviados na requisição não estão corretos' }
+const ERROR_NOT_FOUND                    = {status : false, status_code: 404, message: 'Não foi encontrado nenhum dado para retorno' }
+const ERROR_CONTENT_TYPE                 = {status : false, status_code: 415, message: 'Não foi possível processar a requisição pois o formato de dados aceitp pela APLI é somente JSON' }
+const ERROR_INTERNAL_SERVER_MODEL        = {status : false, status_code: 500, message: 'Não foi possível procesar a requisição por conta de erro na API [ERRO NA MODELAGEM DE DADOS]' }
+const ERROR_INTERNAL_SERVER_CONTROLLER   = {status : false, status_code: 500, message: 'Não foi possível procesar a requisição por conta de erro na API [ERRO NA CONTROLLER' }
 
 //Mensagens de sucesso da API
 const SUCCES_CREATED_ITEM = { status : true, status_code: 201, message: 'Registro inserido com sucesso' }
+
+//Retorno para GET 200
+const SUCCES_RESPONSE       =  { status : true, status_code: 200}
+
+//Retorno para PUT 200
+const SUCESS_UPDATED_ITEM   = { status : true, status_code: 200, message: 'Registro atualizado com sucesso' }
 
 module.exports = {
     DEFAULT_MESSAGE,
@@ -40,5 +42,8 @@ module.exports = {
     SUCCES_CREATED_ITEM,
     ERROR_INTERNAL_SERVER_MODEL,
     ERROR_CONTENT_TYPE,
-    ERROR_INTERNAL_SERVER_CONTROLLER
+    ERROR_INTERNAL_SERVER_CONTROLLER,
+    ERROR_NOT_FOUND,
+    SUCCES_RESPONSE,
+    SUCESS_UPDATED_ITEM
 }
